@@ -1,5 +1,12 @@
 var http = require('http');
 var querystring = require('querystring');
+var dbPool = require('./dbconnection');
+dbPool.getConnection(function(err, conn){
+    conn.query('SELECT ...', function(err, rows){
+        //결과 사용
+        conn.release();
+    });
+});
 
 var movieList = [{ title: 'Starwars', director: '조지루카스'}];
 
